@@ -92,11 +92,46 @@ input[type="number"] {
     -webkit-appearance: none;
   }
   
+   #Camada_2 {
+    width: 20px;
+    margin-left: 20px;
+   }
+
+   #Camada {
+    width: 0px;
+    margin-right: 20px;
+   }
+
   .number-input {
     border: 2px solid #ddd;
     display: inline-flex;
   }
   
+  .number-input-lock {
+    border: 2px solid #A3B0BB;
+    display: inline-flex;
+    color: #A3B0BB;
+    opacity: 40%;
+  }
+
+  .number-input-lock,
+  .number-input-lock * {
+    box-sizing: border-box;
+    border-radius: 100px;
+    border-color: #2E415466;
+  }
+
+  .number-input-lock input[type=number] {
+    font-family: sans-serif;
+    max-width: 6.5rem;
+    border: none;
+    border-width: 0 2px;
+    font-size: 1.6rem;
+    height: 40px;
+    text-align: center;
+    opacity: 60%;
+  }
+
   .number-input,
   .number-input * {
     box-sizing: border-box;
@@ -112,7 +147,7 @@ input[type="number"] {
     align-items: center;
     justify-content: center;
     width: 3.3rem;
-    height: 25px;
+    height: 28px;
     cursor: pointer;
     margin: 0;
     position: relative;
@@ -122,14 +157,14 @@ input[type="number"] {
     display: inline-block;
     position: absolute;
     font-family: "Font Awesome 5 Free"; 
-    font-weight: 900;
+    font-weight: 700;
     content: '\f068';
     transform: translate(-35%, -35%) rotate(180deg);
   }
   .number-input button.plus:after {
     display: inline-block;
     position: absolute;
-    font-weight: 900;
+    font-weight: 800;
     content: '\2b';
     font-size: 32px;
     color: #F1B335;
@@ -173,8 +208,10 @@ footer a {
 }
 
 #footer {
-    height: 80px;
-    background: 0% 0% no-repeat padding-box;
+  padding-top: 20px;
+  background: #255B91;
+  color: #fff;
+  height: 80px;
 }
 
 @media screen and (min-width: 100px) and (max-width: 700px) {
