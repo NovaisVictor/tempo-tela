@@ -14,7 +14,7 @@ let chart = new Chart(ctx, {
                 '#22C4DE', '#EE5151', '#FC22E6', '#589AEF', '#FC8F22', '#D23689', '#7058EF', '#FCC922', '#CD40EF',
           '#CEEB09'
             ],
-            data: [20, 2, 2, 2, 2, 3, 4, 2, 2, 2 , 2, 2],
+            data: [24, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
         }]
     },
     // Configuration options go here
@@ -45,6 +45,16 @@ let chart = new Chart(ctx, {
             intersect : true,
             backgroundColor : 'rgba(41, 128, 185,0.8)'
         },
+        yAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true,
+                steps: 10,
+                stepValue: 5,
+                max: 24,
+                min: 0
+            }
+        }],
     }
 });
 
@@ -63,10 +73,15 @@ const removeData = () => {
 
 const addValue = (data) => {
     chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] + 1
+    chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] - 1
     chart.update()
+    num = 0
+    input = document.getElementById(data)
+    input.value= num++
 }
 
 function removeValue(data) {
     chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] - 1
+    chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] + 1
     chart.update()
 }
