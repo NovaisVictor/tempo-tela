@@ -1,0 +1,463 @@
+
+  .icon-pencil:before {
+    content: "\e905";
+  }
+  .icon-plus:before {
+    content: "\ea0a";
+  }
+  .icon-minus:before {
+    content: "\ea0b";
+  }
+  
+  
+
+  
+:root {
+
+    /* Colors: */
+    ---f0ac00: #F0AC00;
+    --unnamed-color-ffffff: #FFFFFF;
+    --unnamed-color-0a4686: #0A4686;
+    
+    /* Font/text values */
+    --unnamed-font-family-century-gothic: Century Gothic;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-weight-bold: bold;
+    --unnamed-font-size-20: 20px;
+    --unnamed-font-size-22: 22px;
+    --unnamed-font-size-38: 38px;
+    --unnamed-font-size-50: 50px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-line-spacing-36: 36px;
+    --unnamed-line-spacing-48: 48px;
+    --unnamed-line-spacing-62: 62px;
+    }
+    
+    /* Character Styles */
+    .unnamed-character-style-1 {
+    font-family: var(--unnamed-font-family-century-gothic);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-20);
+    line-height: var(--unnamed-line-spacing-36);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-0a4686);
+    }
+    .unnamed-character-style-2 {
+    font-family: var(--unnamed-font-family-century-gothic);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-bold);
+    font-size: var(--unnamed-font-size-38);
+    line-height: var(--unnamed-line-spacing-48);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-0a4686);
+    }
+    .unnamed-character-style-3 {
+    font-family: var(--unnamed-font-family-century-gothic);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-bold);
+    font-size: var(--unnamed-font-size-50);
+    line-height: var(--unnamed-line-spacing-62);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-0a4686);
+    }
+    .unnamed-character-style-4 {
+    font-family: var(--unnamed-font-family-century-gothic);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-normal);
+    font-size: var(--unnamed-font-size-22);
+    line-height: var(--unnamed-line-spacing-36);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    }
+    .unnamed-character-style-5 {
+    font-family: var(--unnamed-font-family-century-gothic);
+    font-style: var(--unnamed-font-style-normal);
+    font-weight: var(--unnamed-font-weight-bold);
+    font-size: var(--unnamed-font-size-50);
+    line-height: var(--unnamed-line-spacing-62);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+  
+  .number-input {
+    border: 2px solid #ddd;
+    display: inline-flex;
+  }
+  
+  .number-input,
+  .number-input * {
+    box-sizing: border-box;
+    border-radius: 100px;
+    border-color: #2E415466;
+  }
+  
+  .number-input button {
+    outline:none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 3.3rem;
+    height: 25px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+  }
+  
+  .number-input button:after {
+    display: inline-block;
+    position: absolute;
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+    content: '\f068';
+    transform: translate(-35%, -35%) rotate(180deg);
+  }
+  .number-input button.plus:after {
+    display: inline-block;
+    position: absolute;
+    font-weight: 900;
+    content: '\2b';
+    font-size: 32px;
+    color: #F1B335;
+    transform: translate(-35%, -35%) rotate(180deg);
+  }
+  
+  .number-input input[type=number] {
+    font-family: sans-serif;
+    max-width: 3.3rem;
+    border: none;
+    border-width: 0 2px;
+    font-size: 1.6rem;
+    height: 40px;
+    text-align: center;
+    opacity: 60%;
+  }
+
+  input[type=number].quantity {
+    border: none;
+  }
+    
+* {
+    background-color: #F2FAFF;
+}
+
+section {
+    margin-top: 5em;
+}
+
+footer {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) 16px/26px Rubik;
+    text-align: center;
+    font: normal normal normal 16px/26px Rubik;
+    letter-spacing: -0.16px;
+    color: #2E415466;
+}
+
+footer a {
+    text-decoration: underline;
+    color: #2E415466;
+}
+
+#footer {
+    height: 80px;
+    background: 0% 0% no-repeat padding-box;
+}
+
+@media screen and (min-width: 100px) and (max-width: 700px) {
+  #piechart {
+    width: 500px; 
+    height: 560px;
+  }
+
+.title {
+
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 38px/50px Rubik;
+    text-align: center;
+    font: normal normal bold 38px/50px Rubik;
+    letter-spacing: -0.66px;
+    color: #2E4154;
+    opacity: 1;
+}
+
+.sub-title {
+    /* UI Properties */
+    font: normal normal bold 14px/24px Rubik;
+    text-align: center;
+    letter-spacing: -0.2px;
+    color: #2E4154B3;
+    opacity: 1;
+}
+
+.title2 {
+
+    /* UI Properties */
+
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 15px Rubik;
+    text-align: left;
+    font: normal normal bold 38px/50px Rubik;
+    letter-spacing: -0.66px;
+    color: #2E4154;
+    opacity: 1;
+}
+
+.sub-title2 {        
+
+
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-36) Rubik;
+text-align: left;
+font: normal normal normal 14px/24px Rubik;
+letter-spacing: -0.2px;
+color: #2E4154B3;
+opacity: 1;
+}
+
+.pie-chart {
+    top: 348px;
+    left: 670px;
+    width: 580px;
+    height: 580px;
+}
+
+.btn-cta {
+margin-top: 80px;
+width: 100%;
+height: 65px;
+background: transparent linear-gradient(99deg, #FFCC00 0%, #FF9900 100%)0% 0% no-repeat padding-box;
+border-radius: 10px;
+font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 38px Rubik;
+letter-spacing: var(--unnamed-character-spacing-0);
+color: var(--unnamed-color-ffffff);
+text-align: center;
+font: normal normal bold 15px Rubik;
+letter-spacing: 0px;
+color: #FFFFFF;
+text-transform: uppercase;
+border: none;
+}
+
+
+.boll {
+  margin-top: 14px;
+  margin-left: -80px;
+  width: 16px;
+  height: 16px; 
+  border-radius: 50px;
+  opacity: 1;
+  
+}
+
+
+
+.input-label {
+  margin-top: 11px;
+  margin-left: -100px;
+
+  /* UI Properties */
+
+  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-36) Rubik;
+  text-align: left;
+  font: normal normal bold 15px Rubik;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+  color: #2E4154B3;
+}
+}
+
+@media screen and (min-width: 701px) {
+
+  #piechart {
+    width: 700px; 
+    height: 700px;
+  }
+    
+    .title {
+        margin-top: 100px;
+        left: 310px;
+        width: 1300px;
+        height: 79px;
+
+        /* UI Properties */
+
+        font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 66px/82px Rubik;
+        text-align: center;
+        font: normal normal bold 66px/82px Rubik;
+        letter-spacing: -0.66px;
+        color: #2E4154;
+        opacity: 1;
+    }
+
+    .sub-title {
+        top: 209px;
+        left: 310px;
+        width: 1300px;
+        height: 60px;
+
+        /* UI Properties */
+
+        text-align: center;
+        letter-spacing: -0.2px;
+        color: #2E4154B3;
+        opacity: 1;
+    }
+
+    .title2 {
+        top: 1537px;
+        left: 310px;
+        width: 700px;
+        height: 161px;
+
+        /* UI Properties */
+
+        font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 66px/82px Rubik;
+        text-align: left;
+        font: normal normal bold 66px/82px Rubik;
+        letter-spacing: -0.66px;
+        color: #2E4154;
+        opacity: 1;
+    }
+
+    .sub-title2 {        
+    top: 1728px;
+    left: 310px;
+    width: 700px;
+    height: 60px;
+
+
+
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-36) Rubik;
+    text-align: left;
+    font: normal normal normal 20px/36px Rubik;
+    letter-spacing: -0.2px;
+    color: #2E4154B3;
+    opacity: 1;
+    }
+
+    .pie-chart {
+        top: 348px;
+        left: 670px;
+        width: 580px;
+        height: 580px;
+    }
+
+    .btn-cta {
+    margin-top: 80px;
+    width: 458px;
+    height: 65px;
+    background: transparent url('Retângulo 197.png') 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 28px/40px Rubik;
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: center;
+    font: normal normal bold 28px/40px Rubik;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    }
+  
+
+    .boll {
+      margin-top: 14px;
+      margin-left: -30px;
+      width: 16px;
+      height: 16px;
+
+      /* UI Properties */
+
+      
+      border-radius: 50px;
+      opacity: 1;
+      
+    }
+
+    
+
+    .input-label {
+      margin-top: 4px;
+      margin-left: -145px;
+
+      /* UI Properties */
+
+      font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-36) Rubik;
+      text-align: left;
+      font: normal normal bold 20px/36px Rubik;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      color: #2E4154B3;
+    }
+    
+}
+
+.chartWithOverlay {
+  position: relative;
+  width: 700px;
+}
+.overlay {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 60px;   /* chartArea top  */
+  left: 180px; /* chartArea left */
+}
+
+.Atividade {
+  background: #EE5151 0% 0% no-repeat padding-box;
+}
+
+.Estudo {
+  background: #FC22E6 0% 0% no-repeat padding-box;
+}
+
+.Sono {
+  background: #D23689 0% 0% no-repeat padding-box;
+}
+
+.tedio {
+  background: #FC8F22 0% 0% no-repeat padding-box;
+}
+
+.Outro-1 {
+  background: #883260 0% 0% no-repeat padding-box;
+}
+
+.Outro-2 {
+  background: #FF8EB8 0% 0% no-repeat padding-box;
+}
+
+.Refeicoes {
+  background: #CEEB09 0% 0% no-repeat padding-box;
+}
+
+.Higiene {
+  background: #CD40EF 0% 0% no-repeat padding-box;
+}
+
+.Trabalho {
+  background: #7058EF 0% 0% no-repeat padding-box;
+}
+
+.tela {
+  background: #22C4DE 0% 0% no-repeat padding-box;
+}
+
+.Livre {
+  background: #FCC922 0% 0% no-repeat padding-box;
+}
+
+ .temp-familia {
+  background: #589AEF 0% 0% no-repeat padding-box;
+}
