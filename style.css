@@ -1,17 +1,4 @@
 
-  .icon-pencil:before {
-    content: "\e905";
-  }
-  .icon-plus:before {
-    content: "\ea0a";
-  }
-  .icon-minus:before {
-    content: "\ea0b";
-  }
-  
-  
-
-  
 :root {
 
     /* Colors: */
@@ -99,14 +86,32 @@ input[type="number"] {
 
    #Camada {
     width: 0px;
-    margin-right: 20px;
+    margin-right: 40px;
    }
 
   .number-input {
     border: 2px solid #ddd;
     display: inline-flex;
   }
+
+  .number-input p {
+    font-size: 1.3em;
+    margin-top: 4px;
+    margin-bottom: -9px;
+    background-color: transparent;
+    margin-left: 2px;
+    color: #505355;
+  }
   
+  .number-input-lock  p {
+    font-size: 1.3em;
+    margin-top: 4px;
+    margin-bottom: -4px;
+    background-color: transparent;
+    margin-left: -25px;
+    color: black;
+  }
+
   .number-input-lock {
     border: 2px solid #A3B0BB;
     display: inline-flex;
@@ -221,7 +226,6 @@ footer a {
   }
 
 .title {
-
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 38px/50px Rubik;
     text-align: center;
     font: normal normal bold 38px/50px Rubik;

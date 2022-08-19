@@ -1,34 +1,50 @@
 let ctx = document.getElementById('chart').getContext('2d');
-
-Chart.defaults.global.defaultFontFamily = 'Roboto'
-
+Chart.defaults.set('plugins.datalabels', {
+    color: '#FE777B'
+  });
+  Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica"
+  Chart.defaults.font.size = 32;
 let chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'pie',
     // The data for our dataset
     data: {
-        labels: ["tela", "Ativi física", "Estudo", "Temp família", "tempo tedio", "Sono", "Escola / Trabalho", "Tempo livre", "Higiene pessoal", "Refeicoes"],
+        labels: ['\uf779', "Atividade física", "Estudo", "Tempo em família", "tempo de tédio", "Sono", "Escola / Trabalho", "Tempo livre", "Higiene pessoal", "Refeicoes", "Outro 1", "Outro 2"],
         datasets: [{
             label: "My First dataset",
             backgroundColor: [
                 '#22C4DE', '#EE5151', '#FC22E6', '#589AEF', '#FC8F22', '#D23689', '#7058EF', '#FCC922', '#CD40EF',
-          '#CEEB09'
+          '#CEEB09', '#883260', '#FF8EB8'
             ],
-            data: [24, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            data: [24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         }]
     },
     // Configuration options go here
+    plugins: [ChartDataLabels],
     options: {
+        plugins: {
+            legend: {
+                display: false,
+            },
+            datalabels: {
+                formatter: (value, context) => {
+                    if(value < 1) {
+                        return ''
+                    }
+                    return '';
+                },
+              },
+        },
         animation : {
             duration : 2000,
             easing : 'easeOutBounce'
         },
         layout : {
             padding : {
-                left : 20,
-                right : 20,
-                top : 20,
-                bottom : 20
+                left : 10,
+                right : 10,
+                top : 10,
+                bottom : 10
             }
         },
         legend : {
@@ -50,13 +66,16 @@ let chart = new Chart(ctx, {
             ticks: {
                 beginAtZero: true,
                 steps: 10,
-                stepValue: 5,
+                stepValue: 0.5,
                 max: 24,
-                min: 0
+                min: 0,
+                precision: 0
             }
         }],
     }
 });
+tela = document.getElementById("0")
+tela.value = chart.data.datasets[0].data[0]
 
 const addData = () => {
     let sizeData = chart.data.datasets[0].data.length
@@ -72,16 +91,31 @@ const removeData = () => {
 }
 
 const addValue = (data) => {
-    chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] + 1
-    chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] - 1
-    chart.update()
-    num = 0
+    if (chart.data.datasets[0].data[data] < 24 && chart.data.datasets[0].data[0] >= 0) {
+        chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] + 0.5
+        chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] - 0.5
+        chart.update()
+    }
+    
     input = document.getElementById(data)
-    input.value= num++
+    tela = document.getElementById("0")
+    tela.value = chart.data.datasets[0].data[0]
+    input.value = chart.data.datasets[0].data[data]
 }
 
 function removeValue(data) {
-    chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] - 1
-    chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] + 1
-    chart.update()
+    if (chart.data.datasets[0].data[data] > 0) {
+        chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] - 0.5
+        chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] + 0.5
+        chart.update()
+    }
+    
+    input = document.getElementById(data)
+    tela = document.getElementById("0")
+    tela.value = chart.data.datasets[0].data[0]
+    input.value = chart.data.datasets[0].data[data]
+    input.document.inn
 }
+
+chart.canvas.parentNode.style.height = '50em';
+chart.canvas.parentNode.style.width = '50em';
