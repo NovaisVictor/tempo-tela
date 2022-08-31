@@ -117,5 +117,11 @@ function removeValue(data) {
     input.document.inn
 }
 
-chart.canvas.parentNode.style.height = '50em';
-chart.canvas.parentNode.style.width = '50em';
+// chart.canvas.parentNode.style.height = '50em';
+// chart.canvas.parentNode.style.width = '50em';
+window.addEventListener('beforeprint', () => {
+    myChart.resize(600, 600);
+  });
+  window.addEventListener('afterprint', () => {
+    myChart.resize();
+  });
