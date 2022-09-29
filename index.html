@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Calcule o tempo de tela do seu filho</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -17,132 +18,225 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
     crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/a880bc936c/UntitledProject/style.css">
+  <link rel="stylesheet" href="https://i.icomoon.io/public/temp/a880bc936c/UntitledProject/style.css">
 </head>
 
-<body>  
+<body>
   <section class="container">
     <h4 class="title">Calcule o tempo de tela do seu filho!</h4>
     <p class="sub-title"><strong>Instruções:</strong> veja as categorias abaixo e adicione a quantidade de tempo
-      que seu filho gasta em cada uma delas. Caso não encontre sua categoria aqui utilize as categorias: "Outros 1 e 2".
-      Ao final desse processo você verá quantidade de tempo que o seu filho gasta nas telas.</p>
-
+      que seu filho gasta em cada uma delas. Caso não encontre sua categoria aqui utilize as categorias: "Outros 1 e 2". <br>
+      Ao final desse processo você verá a quantidade de tempo que seu filho pode usar nas telas.</p>
+    <!-- <img src="img/svg - tempo de tela.png" alt="" style="position: absolute; right: 800px; top: 500px; width: 80px;"> -->
     <!-- chart -->
     <div class="container chart">
-        <canvas id='chart'></canvas>
-        <!-- <button onclick="addData()">Add Data</button>
-        <button onclick="removeData()">Remove Data</button> -->
+      <div id="container"></div>
+      <div class="row">
+        <canvas id='myChart'></canvas>
+      </div>
     </div>
-<!-- row 1 -->
-        <div class="row text-lg-center mt-5">
+  </section>
+  <div class="container labels">
+    <div class="label">
+      <span>
+        <div class="square tela"></div>Tempo de tela<img src="img/svg - tempo de tela.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Atividade"></div>Tempo de atividade física<img src="img/svg - atividade física.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square temp-familia"></div>Tempo em família<img src="img/svg - tempo em família.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square tedio"></div>Tempo de tédio<img src="img/svg - tempo de tédio.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Sono"></div>Tempo de sono<img src="img/svg - sono.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Trabalho"></div>Tempo de escola/trabalho<img src="img/svg - escola _ trabalho.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Livre"></div>Tempo livre<img src="img/svg - tempo livre.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Higiene"></div>Tempo de higiene pessoal<img src="img/svg - higiene pessoal.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Refeicoes"></div>Tempo de refeições<img src="img/svg - refeições.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Outro-1"></div>Outro 1<img src="img/svg - outro 1.png" alt="">
+      </span>
+    </div>
+    <div class="label">
+      <span>
+        <div class="square Outro-2"></div>Outro 2<img src="img/svg - outro 2.png" alt="">
+      </span>
+    </div>
+  </div>
 
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input-lock">
-              <?xml version="1.0" encoding="UTF-8"?><svg id="Camada_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.35 332.94"><defs><style>.cls-1{fill:#2e4154;}</style></defs><g id="Camada_1-2"><path class="cls-1" d="M135.98,332.93c-37.54,0-75.07,0-112.61,0-11.08,0-19.96-6.63-22.67-16.82-.6-2.24-.7-4.53-.7-6.82,0-44.77-.02-89.54,0-134.32,0-11.4,6.57-20.26,16.9-22.93,3.82-.99,7.72-.64,11.59-.63,1.38,0,1.75-.34,1.75-1.74-.05-14.3-.02-28.59-.04-42.89-.03-19.32,4.16-37.57,14.4-54.09C58.37,30.52,77.11,14.21,101.98,5.52,115.3,.87,129.1-.75,143.15,.31c40.97,3.09,69.69,24.54,88.65,60.02,7.2,13.47,10.09,28.25,10.2,43.51,.11,15.24,.06,30.48,.01,45.71,0,1.43,.32,1.88,1.82,1.87,4.04-.02,8.11-.35,12.1,.75,9.2,2.54,16.05,11.15,16.37,20.68,.02,.65,.03,1.29,.03,1.94,0,44.89-.01,89.78,.01,134.67,0,9.62-4.25,16.65-12.66,21.17-3.44,1.85-7.23,2.3-11.1,2.3-37.54-.01-75.07,0-112.61,0Zm.09-181.55c19.59,0,39.17-.02,58.76,.04,1.58,0,1.93-.41,1.92-1.95-.06-14.23-.03-28.47-.04-42.7,0-8.49-1.09-16.83-4.74-24.54-9.8-20.68-25.64-33.51-48.76-36.34-10.68-1.3-21.27-.31-31.01,4.4-23.3,11.26-36.19,29.6-36.51,55.92-.18,14.47,0,28.94-.07,43.41,0,1.5,.42,1.8,1.86,1.8,19.53-.05,39.06-.03,58.58-.03Zm0,151.26c7.35,0,14.71,.02,22.06,0,6.38-.02,9.63-4.49,7.78-10.62-5.12-16.95-10.2-33.92-15.38-50.85-.52-1.69-.41-2.51,1.27-3.54,13.01-7.96,18.14-23.68,12.39-37.45-5.78-13.83-20.75-21.28-35.5-17.67-11.61,2.84-20.51,12.69-22.5,24.91-1.92,11.8,3.76,23.84,14.46,30.29,1.55,.93,1.69,1.7,1.21,3.29-5.23,17.16-10.38,34.35-15.56,51.53-.41,1.36-.74,2.7-.37,4.15,.92,3.6,3.85,5.94,7.73,5.96,7.47,.04,14.94,.01,22.41,.01Z"/></g></svg>
-              <input id="0" class="quantity" min="0" max="24" name="quantity" value="24" type="number" step="0.5"><p>h</p>
-              <?xml version="1.0" encoding="UTF-8"?><svg id="Camada" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.35 332.94"><defs><style>.cls-1{fill:#2e4154;}</style></defs><g id="Camada_1-2"><path class="cls-1" d="M135.98,332.93c-37.54,0-75.07,0-112.61,0-11.08,0-19.96-6.63-22.67-16.82-.6-2.24-.7-4.53-.7-6.82,0-44.77-.02-89.54,0-134.32,0-11.4,6.57-20.26,16.9-22.93,3.82-.99,7.72-.64,11.59-.63,1.38,0,1.75-.34,1.75-1.74-.05-14.3-.02-28.59-.04-42.89-.03-19.32,4.16-37.57,14.4-54.09C58.37,30.52,77.11,14.21,101.98,5.52,115.3,.87,129.1-.75,143.15,.31c40.97,3.09,69.69,24.54,88.65,60.02,7.2,13.47,10.09,28.25,10.2,43.51,.11,15.24,.06,30.48,.01,45.71,0,1.43,.32,1.88,1.82,1.87,4.04-.02,8.11-.35,12.1,.75,9.2,2.54,16.05,11.15,16.37,20.68,.02,.65,.03,1.29,.03,1.94,0,44.89-.01,89.78,.01,134.67,0,9.62-4.25,16.65-12.66,21.17-3.44,1.85-7.23,2.3-11.1,2.3-37.54-.01-75.07,0-112.61,0Zm.09-181.55c19.59,0,39.17-.02,58.76,.04,1.58,0,1.93-.41,1.92-1.95-.06-14.23-.03-28.47-.04-42.7,0-8.49-1.09-16.83-4.74-24.54-9.8-20.68-25.64-33.51-48.76-36.34-10.68-1.3-21.27-.31-31.01,4.4-23.3,11.26-36.19,29.6-36.51,55.92-.18,14.47,0,28.94-.07,43.41,0,1.5,.42,1.8,1.86,1.8,19.53-.05,39.06-.03,58.58-.03Zm0,151.26c7.35,0,14.71,.02,22.06,0,6.38-.02,9.63-4.49,7.78-10.62-5.12-16.95-10.2-33.92-15.38-50.85-.52-1.69-.41-2.51,1.27-3.54,13.01-7.96,18.14-23.68,12.39-37.45-5.78-13.83-20.75-21.28-35.5-17.67-11.61,2.84-20.51,12.69-22.5,24.91-1.92,11.8,3.76,23.84,14.46,30.29,1.55,.93,1.69,1.7,1.21,3.29-5.23,17.16-10.38,34.35-15.56,51.53-.41,1.36-.74,2.7-.37,4.15,.92,3.6,3.85,5.94,7.73,5.96,7.47,.04,14.94,.01,22.41,.01Z"/></g></svg>
-            </div>
+  <section class="container">
+    <!-- row 1 -->
+    <div class="row text-lg-center mt-5">
 
-          </div>
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input-lock">
+          <?xml version="1.0" encoding="UTF-8"?><svg id="Camada_2" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 272.35 332.94">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #2e4154;
+                }
+              </style>
+            </defs>
+            <g id="Camada_1-2">
+              <path class="cls-1"
+                d="M135.98,332.93c-37.54,0-75.07,0-112.61,0-11.08,0-19.96-6.63-22.67-16.82-.6-2.24-.7-4.53-.7-6.82,0-44.77-.02-89.54,0-134.32,0-11.4,6.57-20.26,16.9-22.93,3.82-.99,7.72-.64,11.59-.63,1.38,0,1.75-.34,1.75-1.74-.05-14.3-.02-28.59-.04-42.89-.03-19.32,4.16-37.57,14.4-54.09C58.37,30.52,77.11,14.21,101.98,5.52,115.3,.87,129.1-.75,143.15,.31c40.97,3.09,69.69,24.54,88.65,60.02,7.2,13.47,10.09,28.25,10.2,43.51,.11,15.24,.06,30.48,.01,45.71,0,1.43,.32,1.88,1.82,1.87,4.04-.02,8.11-.35,12.1,.75,9.2,2.54,16.05,11.15,16.37,20.68,.02,.65,.03,1.29,.03,1.94,0,44.89-.01,89.78,.01,134.67,0,9.62-4.25,16.65-12.66,21.17-3.44,1.85-7.23,2.3-11.1,2.3-37.54-.01-75.07,0-112.61,0Zm.09-181.55c19.59,0,39.17-.02,58.76,.04,1.58,0,1.93-.41,1.92-1.95-.06-14.23-.03-28.47-.04-42.7,0-8.49-1.09-16.83-4.74-24.54-9.8-20.68-25.64-33.51-48.76-36.34-10.68-1.3-21.27-.31-31.01,4.4-23.3,11.26-36.19,29.6-36.51,55.92-.18,14.47,0,28.94-.07,43.41,0,1.5,.42,1.8,1.86,1.8,19.53-.05,39.06-.03,58.58-.03Zm0,151.26c7.35,0,14.71,.02,22.06,0,6.38-.02,9.63-4.49,7.78-10.62-5.12-16.95-10.2-33.92-15.38-50.85-.52-1.69-.41-2.51,1.27-3.54,13.01-7.96,18.14-23.68,12.39-37.45-5.78-13.83-20.75-21.28-35.5-17.67-11.61,2.84-20.51,12.69-22.5,24.91-1.92,11.8,3.76,23.84,14.46,30.29,1.55,.93,1.69,1.7,1.21,3.29-5.23,17.16-10.38,34.35-15.56,51.53-.41,1.36-.74,2.7-.37,4.15,.92,3.6,3.85,5.94,7.73,5.96,7.47,.04,14.94,.01,22.41,.01Z" />
+            </g>
+          </svg>
+          <input id="0" class="quantity" min="0" max="24" name="quantity" value="24" type="number" step="0.5">
+          <p>h</p>
+          <?xml version="1.0" encoding="UTF-8"?><svg id="Camada" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 272.35 332.94">
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: #2e4154;
+                }
+              </style>
+            </defs>
+            <g id="Camada_1-2">
+              <path class="cls-1"
+                d="M135.98,332.93c-37.54,0-75.07,0-112.61,0-11.08,0-19.96-6.63-22.67-16.82-.6-2.24-.7-4.53-.7-6.82,0-44.77-.02-89.54,0-134.32,0-11.4,6.57-20.26,16.9-22.93,3.82-.99,7.72-.64,11.59-.63,1.38,0,1.75-.34,1.75-1.74-.05-14.3-.02-28.59-.04-42.89-.03-19.32,4.16-37.57,14.4-54.09C58.37,30.52,77.11,14.21,101.98,5.52,115.3,.87,129.1-.75,143.15,.31c40.97,3.09,69.69,24.54,88.65,60.02,7.2,13.47,10.09,28.25,10.2,43.51,.11,15.24,.06,30.48,.01,45.71,0,1.43,.32,1.88,1.82,1.87,4.04-.02,8.11-.35,12.1,.75,9.2,2.54,16.05,11.15,16.37,20.68,.02,.65,.03,1.29,.03,1.94,0,44.89-.01,89.78,.01,134.67,0,9.62-4.25,16.65-12.66,21.17-3.44,1.85-7.23,2.3-11.1,2.3-37.54-.01-75.07,0-112.61,0Zm.09-181.55c19.59,0,39.17-.02,58.76,.04,1.58,0,1.93-.41,1.92-1.95-.06-14.23-.03-28.47-.04-42.7,0-8.49-1.09-16.83-4.74-24.54-9.8-20.68-25.64-33.51-48.76-36.34-10.68-1.3-21.27-.31-31.01,4.4-23.3,11.26-36.19,29.6-36.51,55.92-.18,14.47,0,28.94-.07,43.41,0,1.5,.42,1.8,1.86,1.8,19.53-.05,39.06-.03,58.58-.03Zm0,151.26c7.35,0,14.71,.02,22.06,0,6.38-.02,9.63-4.49,7.78-10.62-5.12-16.95-10.2-33.92-15.38-50.85-.52-1.69-.41-2.51,1.27-3.54,13.01-7.96,18.14-23.68,12.39-37.45-5.78-13.83-20.75-21.28-35.5-17.67-11.61,2.84-20.51,12.69-22.5,24.91-1.92,11.8,3.76,23.84,14.46,30.29,1.55,.93,1.69,1.7,1.21,3.29-5.23,17.16-10.38,34.35-15.56,51.53-.41,1.36-.74,2.7-.37,4.15,.92,3.6,3.85,5.94,7.73,5.96,7.47,.04,14.94,.01,22.41,.01Z" />
+            </g>
+          </svg>
+        </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll tela"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Tempo de tela</label>
-          </div>
-          
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input">
-              <button onclick="removeValue(1)" class="minus"></button>
-              <input id="1" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
-              <button onclick="addValue(1)" class="plus"></button>
-            </div>
+      </div>
 
-          </div>
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll tela"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Tempo de tela</label>
+      </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll Atividade"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Atividade física</label>
-          </div>
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input">
+          <button onclick="removeValue(1)" class="minus"></button>
+          <input id="1" class="quantity" min="0" max="24" name="quantity" value="24" type="number" step="0.5">
+          <p>h</p>
+          <button onclick="addValue(1)" class="plus"></button>
+        </div>
 
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input">
-              <button onclick="removeValue(2)" class="minus"></button>
-              <input id="2" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
-              <button onclick="addValue(2)" class="plus"></button>
-            </div>
+      </div>
 
-          </div>
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll Atividade"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Atividade física</label>
+      </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll Estudo"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Estudo</label>
-          </div>
-          
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input">
+          <button onclick="removeValue(2)" class="minus"></button>
+          <input id="2" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
+          <button onclick="addValue(2)" class="plus"></button>
+        </div>
+
+      </div>
+
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll Estudo"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Estudo</label>
+      </div>
+
     </div>
 
-        <!-- row 2 -->
-        <div class="row text-lg-center">
+    <!-- row 2 -->
+    <div class="row text-lg-center">
 
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input">
-              <button onclick="removeValue(3)" class="minus"></button>
-              <input id="3" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
-              <button onclick="addValue(3)" class="plus"></button>
-            </div>
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input">
+          <button onclick="removeValue(3)" class="minus"></button>
+          <input id="3" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
+          <button onclick="addValue(3)" class="plus"></button>
+        </div>
 
-          </div>
+      </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll temp-familia"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Tempo em Família</label>
-          </div>
-          
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input">
-              <button onclick="removeValue(4)" class="minus"></button>
-              <input id="4" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
-              <button onclick="addValue(4)" class="plus"></button>
-            </div>
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll temp-familia"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Tempo em Família</label>
+      </div>
 
-          </div>
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input">
+          <button onclick="removeValue(4)" class="minus"></button>
+          <input id="4" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
+          <button onclick="addValue(4)" class="plus"></button>
+        </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll tedio"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Tempo de tédio</label>
-          </div>
+      </div>
 
-          <div class="col-6 col-lg-2 mt-4">
-            <!-- Inputs -->
-            <div class="number-input">
-              <button onclick="removeValue(5)" class="minus"></button>
-              <input id="5" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
-              <button onclick="addValue(5)" class="plus"></button>
-            </div>
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll tedio"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Tempo de tédio</label>
+      </div>
 
-          </div>
+      <div class="col-6 col-lg-2 mt-4">
+        <!-- Inputs -->
+        <div class="number-input">
+          <button onclick="removeValue(5)" class="minus"></button>
+          <input id="5" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
+          <button onclick="addValue(5)" class="plus"></button>
+        </div>
 
-          <div class="col-1 col-lg-1 text-center mt-4">
-            <div class="boll Sono"></div>
-          </div>
-          <div class="col-5 col-lg-1 mt-4">
-            <label class="input-label">Sono</label>
-          </div>
-          
+      </div>
+
+      <div class="col-1 col-lg-1 text-center mt-4">
+        <div class="boll Sono"></div>
+      </div>
+      <div class="col-5 col-lg-1 mt-4">
+        <label class="input-label">Sono</label>
+      </div>
+
     </div>
 
     <!-- row 3 -->
@@ -152,7 +246,8 @@
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(6)" class="minus"></button>
-          <input id="6" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="6" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(6)" class="plus"></button>
         </div>
 
@@ -164,12 +259,13 @@
       <div class="col-5 col-lg-1 mt-4">
         <label class="input-label">Escola / Trabalho</label>
       </div>
-      
+
       <div class="col-6 col-lg-2 mt-4">
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(7)" class="minus"></button>
-          <input id="7" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="7" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(7)" class="plus"></button>
         </div>
 
@@ -186,7 +282,8 @@
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(10)" class="minus"></button>
-          <input id="10" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="10" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(10)" class="plus"></button>
         </div>
 
@@ -198,7 +295,7 @@
       <div class="col-5 col-lg-1 mt-4">
         <label class="input-label">Outro 1</label>
       </div>
-      
+
     </div>
 
     <!-- row 4 -->
@@ -208,7 +305,8 @@
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(8)" class="minus"></button>
-          <input id="8" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="8" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(8)" class="plus"></button>
         </div>
 
@@ -220,12 +318,13 @@
       <div class="col-5 col-lg-1 mt-4">
         <label class="input-label">Higiene pessoal</label>
       </div>
-      
+
       <div class="col-6 col-lg-2 mt-4">
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(9)" class="minus"></button>
-          <input id="9" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="9" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(9)" class="plus"></button>
         </div>
 
@@ -242,7 +341,8 @@
         <!-- Inputs -->
         <div class="number-input">
           <button onclick="removeValue(11)" class="minus"></button>
-          <input id="11" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5"><p>h</p>
+          <input id="11" class="quantity" min="0" max="24" name="quantity" value="0" type="number" step="0.5">
+          <p>h</p>
           <button onclick="addValue(11)" class="plus"></button>
         </div>
 
@@ -254,7 +354,7 @@
       <div class="col-5 col-lg-1 mt-4">
         <label class="input-label">Outro 2</label>
       </div>
-      
+
     </div>
   </section>
 
@@ -264,22 +364,26 @@
         <h4 class="title2">Controle o tempo do seu filho nas telas!</h4>
         <p class="sub-title2">Descubra agora como você pode ter controle total sobre o tempo que o seu filho fica nas
           telas e saiba como administrar isso de forma segura e eficiente.</p>
-        <a href="https://proteka.com.br/tempo-de-tela-controlado/"><button class="btn-cta">EU PRECISO DISSO!</button></a>
+        <a href="https://proteka.com.br/tempo-de-tela-controlado/"><button class="btn-cta">EU PRECISO
+            DISSO!</button></a>
       </div>
       <div class="col text-center">
         <img src="Mockup - Tempo de tela.png" alt="">
       </div>
     </div>
+    <div class="row text-center footer">
+      <p>Consulte os nossos <a href="https://proteka.com.br/termos-de-uso/">Termos de uso.</a></p>
+    </div>
   </section>
-<script src='./node_modules/chart.js/dist/Chart.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="js/index.js"></script>
 </body>
-<footer class="text-center"> 
-  <p>Consulte os nossos <a href="https://proteka.com.br/termos-de-uso/">Termos de uso.</a></p>  
-</footer>
 <div class="text-center" id="footer">
   ® 2022 Proteka – Todos os Direitos Reservados
 </div>
+
 </html>

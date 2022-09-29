@@ -1,65 +1,71 @@
-let ctx = document.getElementById('chart').getContext('2d');
-Chart.defaults.set('plugins.datalabels', {
-    color: '#FE777B'
-  });
-  Chart.defaults.font.family = "'FontAwesome', 'Helvetica Neue', 'Helvetica"
-  Chart.defaults.font.size = 32;
-let chart = new Chart(ctx, {
-    // The type of chart we want to create
+
+// setup
+const data = {
+    labels: ["tela", "Atividade física", "Estudo", "Tempo em família", "tempo de tédio", "Sono", "Escola / Trabalho", "Tempo livre", "Higiene pessoal", "Refeicoes", "Outro 1", "Outro 2"],
+    datasets: [{
+        label: "My First dataset",
+        data: [24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        backgroundColor: [
+            'rgb(34, 197, 214)', '#EE5151', '#FC22E6', '#589AEF', '#FC8F22', '#D23689', '#7058EF', '#FCC922', '#CD40EF',
+            '#CEEB09', '#883260', '#FF8EB8'
+        ],
+    }]
+}
+
+// const barAvatar = {
+//     id: 'barAvatar',
+//     beforeDraw(chart, args, options) {
+//         const { ctx, chartArea: { top, bottom, left, right, width, height },
+//             scales: { x, y } } = chart;
+//         ctx.save();
+
+//         ctx.drawImage(img1, 522,  122, 60, 60);
+//         // ctx.drawImage(img1, 12,  12, 30, 30);
+//     }
+// }
+
+
+// config
+const config = {
     type: 'pie',
-    // The data for our dataset
-    data: {
-        labels: ['\uf779', "Atividade física", "Estudo", "Tempo em família", "tempo de tédio", "Sono", "Escola / Trabalho", "Tempo livre", "Higiene pessoal", "Refeicoes", "Outro 1", "Outro 2"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: [
-                '#22C4DE', '#EE5151', '#FC22E6', '#589AEF', '#FC8F22', '#D23689', '#7058EF', '#FCC922', '#CD40EF',
-          '#CEEB09', '#883260', '#FF8EB8'
-            ],
-            data: [24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        }]
-    },
-    // Configuration options go here
-    plugins: [ChartDataLabels],
+    data,
     options: {
         plugins: {
             legend: {
                 display: false,
+                position: 'bottom'
             },
-            datalabels: {
-                formatter: (value, context) => {
-                    if(value < 1) {
-                        return ''
-                    }
-                    return '';
-                },
-              },
-        },
-        animation : {
-            duration : 2000,
-            easing : 'easeOutBounce'
-        },
-        layout : {
-            padding : {
-                left : 10,
-                right : 10,
-                top : 10,
-                bottom : 10
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         },
-        legend : {
-            display : false,
-            position : 'bottom'
+        animation: {
+            duration: 2000,
+            easing: 'easeOutBounce'
         },
-        title : {
-            display : false,
-            text : 'Sales by Months',
-            fontSize : 20
+        layout: {
+            padding: {
+                left: 10,
+                right: 10,
+                top: 10,
+                bottom: 10
+            }
         },
-        tooltips : {
-            enabled : true,
-            intersect : true,
-            backgroundColor : 'rgba(41, 128, 185,0.8)'
+        legend: {
+            display: false,
+            position: 'bottom'
+        },
+        title: {
+            display: false,
+            text: 'Sales by Months',
+            fontSize: 20
+        },
+        tooltips: {
+            enebled: true,
+            intersect: true,
+            backgroundColor: 'rgba(41, 128, 185,0.8)'
         },
         yAxes: [{
             display: true,
@@ -72,48 +78,44 @@ let chart = new Chart(ctx, {
                 precision: 0
             }
         }],
-    }
-});
+    },
+    // plugins: [barAvatar]
+};
+
+// render init block
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+);
+
+
 tela = document.getElementById("0")
-tela.value = chart.data.datasets[0].data[0]
-
-const addData = () => {
-    let sizeData = chart.data.datasets[0].data.length
-    chart.data.datasets[0].data[sizeData] = Math.random() * 100
-    chart.data.labels[sizeData] = `New Data ${sizeData + 1}`
-    chart.update()
-}
-
-const removeData = () => {
-    chart.data.datasets[0].data.pop()
-    chart.data.labels.pop()
-    chart.update()
-}
+tela.value = console.log(myChart.data.datasets[0].data[0])
 
 const addValue = (data) => {
-    if (chart.data.datasets[0].data[data] < 24 && chart.data.datasets[0].data[0] >= 0) {
-        chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] + 0.5
-        chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] - 0.5
-        chart.update()
+    if (myChart.data.datasets[0].data[data] < 24 && myChart.data.datasets[0].data[0] >= 0) {
+        myChart.data.datasets[0].data[data] = myChart.data.datasets[0].data[data] + 0.5
+        myChart.data.datasets[0].data[0] = myChart.data.datasets[0].data[0] - 0.5
+        myChart.update()
     }
-    
+
     input = document.getElementById(data)
     tela = document.getElementById("0")
-    tela.value = chart.data.datasets[0].data[0]
-    input.value = chart.data.datasets[0].data[data]
+    tela.value = myChart.data.datasets[0].data[0]
+    input.value = myChart.data.datasets[0].data[data]
 }
 
 function removeValue(data) {
-    if (chart.data.datasets[0].data[data] > 0) {
-        chart.data.datasets[0].data[data] = chart.data.datasets[0].data[data] - 0.5
-        chart.data.datasets[0].data[0] = chart.data.datasets[0].data[0] + 0.5
-        chart.update()
+    if (myChart.data.datasets[0].data[data] > 0) {
+        myChart.data.datasets[0].data[data] = myChart.data.datasets[0].data[data] - 0.5
+        myChart.data.datasets[0].data[0] = myChart.data.datasets[0].data[0] + 0.5
+        myChart.update()
     }
-    
+
     input = document.getElementById(data)
     tela = document.getElementById("0")
-    tela.value = chart.data.datasets[0].data[0]
-    input.value = chart.data.datasets[0].data[data]
+    tela.value = myChart.data.datasets[0].data[0]
+    input.value = myChart.data.datasets[0].data[data]
     input.document.inn
 }
 
@@ -121,7 +123,7 @@ function removeValue(data) {
 // chart.canvas.parentNode.style.width = '50em';
 window.addEventListener('beforeprint', () => {
     myChart.resize(600, 600);
-  });
-  window.addEventListener('afterprint', () => {
+});
+window.addEventListener('afterprint', () => {
     myChart.resize();
-  });
+});
